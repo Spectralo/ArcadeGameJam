@@ -1,0 +1,23 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="ArcadeGameJam"
+config/features=PackedStringArray("4.3", "Forward Plus")
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
+global_illumination/sdfgi/frames_to_converge=3
+2d/sdfgi/frames_to_converge=5
+2d/positional_shadow/soft_shadow_filter_quality=2
+2d/directional_shadow/soft_shadow_filter_quality=2

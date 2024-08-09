@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://b06kpv4y2jsdv"]
+
+[ext_resource type="PackedScene" uid="uid://c4dvvpmtayjx4" path="res://assets/models/furnitures/simplewall.glb" id="1_gpljh"]
+[ext_resource type="PackedScene" uid="uid://cgcfvwjjrwfs2" path="res://assets/models/furnitures/doorwall.glb" id="2_j1mav"]
+[ext_resource type="PackedScene" uid="uid://b78ar8x10bci" path="res://assets/models/furnitures/door.glb" id="3_umda7"]
+[ext_resource type="PackedScene" uid="uid://dxgxyv1a6v4o5" path="res://assets/models/furnitures/lamp.glb" id="4_s6v6o"]
+[ext_resource type="PackedScene" uid="uid://ck6waitgsuyci" path="res://assets/models/furnitures/table.glb" id="5_bphqk"]
+[ext_resource type="PackedScene" uid="uid://rmifukh1cmwm" path="res://assets/models/furnitures/chair.glb" id="6_vxgar"]
+[ext_resource type="PackedScene" uid="uid://cyv3h2ne2fge3" path="res://assets/models/furnitures/pc.glb" id="7_irtxj"]
+[ext_resource type="PackedScene" uid="uid://dkutev3q6aic3" path="res://assets/models/furnitures/lamp2.glb" id="8_07le4"]
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_80ax7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7cdyj"]
+size = Vector3(6, 0.1, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfk7w"]
+albedo_color = Color(0.668418, 0.37051, 0.212962, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boi8y"]
+albedo_color = Color(0.992157, 0.631373, 0.439216, 1)
+emission_enabled = true
+emission = Color(0.922789, 3.24883e-06, 1.73271e-06, 1)
+emission_energy_multiplier = 16.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = SubResource("MeshLibrary_80ax7")
+
+[node name="walls_ground" type="Node" parent="."]
+
+[node name="simplewall" parent="walls_ground" instance=ExtResource("1_gpljh")]
+
+[node name="simplewall2" parent="walls_ground" instance=ExtResource("1_gpljh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95409, 0, 0)
+
+[node name="doorwall" parent="walls_ground" instance=ExtResource("2_j1mav")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0.00383971, 0.999993, 1.67839e-10, -0.999993, 0.00383971, -4.37111e-08, -1.00926, 0, 0.926197)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walls_ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.825814, -0.103667, 1.07939)
+mesh = SubResource("BoxMesh_7cdyj")
+surface_material_override/0 = SubResource("StandardMaterial3D_jfk7w")
+
+[node name="door" parent="." instance=ExtResource("3_umda7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.94431, 0.767772, 0.676446)
+
+[node name="lamp" parent="." instance=ExtResource("4_s6v6o")]
+transform = Transform3D(-0.209107, 0, -0.977893, 0, 1, 0, 0.977893, 0, -0.209107, -0.376253, 0, 0.119694)
+
+[node name="BézierCurve_001" parent="lamp" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0228236, 0, 0.106735)
+cast_shadow = 0
+surface_material_override/1 = SubResource("StandardMaterial3D_boi8y")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lamp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366717, 0.708629, -0.141779)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+omni_range = 1.811
+omni_attenuation = 0.624
+omni_shadow_mode = 0
+
+[node name="furniture" type="Node" parent="."]
+
+[node name="table" parent="furniture" instance=ExtResource("5_bphqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.525354, 0.404707, 0.832179)
+
+[node name="chair" parent="furniture" instance=ExtResource("6_vxgar")]
+transform = Transform3D(-0.88991, 0, -0.456135, 0, 1, 0, 0.456135, 0, -0.88991, 1.49849, 0.479395, 1.43777)
+
+[node name="pc" parent="furniture" instance=ExtResource("7_irtxj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.841324, 0.942426, 0.760643)
+
+[node name="lamp2" parent="furniture" instance=ExtResource("8_07le4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15456, 1.76378, 1.58591)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="furniture/lamp2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86462, -0.009166, 0.0690904)
+omni_range = 3.30732
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889293, 3.75017)
+
+[editable path="lamp"]
