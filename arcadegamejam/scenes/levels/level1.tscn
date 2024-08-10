@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://s4gwp25m63wu"]
+[gd_scene load_steps=11 format=3 uid="uid://s4gwp25m63wu"]
 
-[ext_resource type="Material" uid="uid://dfstdx2sogm1q" path="res://assets/protod.tres" id="1_pgf5h"]
-[ext_resource type="PackedScene" uid="uid://jv255sgg36dl" path="res://scenes/lamp.tscn" id="2_cuvc2"]
-[ext_resource type="PackedScene" uid="uid://bmisxlt44w7dq" path="res://scenes/door.tscn" id="4_6w5n1"]
-[ext_resource type="PackedScene" uid="uid://d1kbmyef6ntnf" path="res://scenes/character.tscn" id="5_j6xnt"]
+[ext_resource type="Material" uid="uid://dfstdx2sogm1q" path="res://assets/protod.tres" id="1_gm5by"]
+[ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_h4vua"]
+[ext_resource type="PackedScene" uid="uid://jv255sgg36dl" path="res://scenes/lamp.tscn" id="2_jb8bf"]
+[ext_resource type="PackedScene" uid="uid://d1kbmyef6ntnf" path="res://scenes/character.tscn" id="3_xo6va"]
+[ext_resource type="PackedScene" uid="uid://bmisxlt44w7dq" path="res://scenes/door.tscn" id="4_w1dy6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j6578"]
 size = Vector3(6, 0.1, 4)
@@ -12,18 +13,18 @@ size = Vector3(6, 0.1, 4)
 size = Vector3(6, 0.1, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xtqyx"]
-material = ExtResource("1_pgf5h")
+material = ExtResource("1_gm5by")
 size = Vector3(0.1, 4, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qvxv4"]
 size = Vector3(0.1, 4, 4)
 
-[sub_resource type="Environment" id="Environment_yon6u"]
+[sub_resource type="Environment" id="Environment_0lh07"]
 sdfgi_enabled = true
-sdfgi_read_sky_light = false
-glow_enabled = true
+adjustment_enabled = true
 
 [node name="Firstlevel" type="Node3D"]
+script = ExtResource("1_h4vua")
 
 [node name="WallsFloor" type="Node" parent="."]
 
@@ -31,7 +32,7 @@ glow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallsFloor/StaticBody3D"]
 mesh = SubResource("BoxMesh_j6578")
-surface_material_override/0 = ExtResource("1_pgf5h")
+surface_material_override/0 = ExtResource("1_gm5by")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallsFloor/StaticBody3D"]
 shape = SubResource("BoxShape3D_qbds0")
@@ -41,7 +42,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.9
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallsFloor/StaticBody3D2"]
 mesh = SubResource("BoxMesh_j6578")
-surface_material_override/0 = ExtResource("1_pgf5h")
+surface_material_override/0 = ExtResource("1_gm5by")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallsFloor/StaticBody3D2"]
 shape = SubResource("BoxShape3D_qbds0")
@@ -51,7 +52,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.9
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallsFloor/StaticBody3D3"]
 mesh = SubResource("BoxMesh_j6578")
-surface_material_override/0 = ExtResource("1_pgf5h")
+surface_material_override/0 = ExtResource("1_gm5by")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallsFloor/StaticBody3D3"]
 shape = SubResource("BoxShape3D_qbds0")
@@ -62,7 +63,7 @@ metadata/targetable = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallsFloor/StaticBody3D4"]
 mesh = SubResource("BoxMesh_j6578")
-surface_material_override/0 = ExtResource("1_pgf5h")
+surface_material_override/0 = ExtResource("1_gm5by")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallsFloor/StaticBody3D4"]
 shape = SubResource("BoxShape3D_qbds0")
@@ -89,16 +90,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94142, 1.96002, 0)
 shape = SubResource("BoxShape3D_qvxv4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_yon6u")
+environment = SubResource("Environment_0lh07")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05652, 0)
 
-[node name="lamp" parent="OmniLight3D" instance=ExtResource("2_cuvc2")]
+[node name="lamp" parent="OmniLight3D" instance=ExtResource("2_jb8bf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47862, -2.01855, -1.15886)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("5_j6xnt")]
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_xo6va")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83577, 1.14709, 0)
 
-[node name="StaticBody3D" parent="." instance=ExtResource("4_6w5n1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.59737, 0.890636, 0.624177)
+[node name="StaticBody3D" parent="." instance=ExtResource("4_w1dy6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.592, 0.0328551, 1.51729)

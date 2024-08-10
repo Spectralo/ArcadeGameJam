@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1kbmyef6ntnf"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_c4sl7"]
-[ext_resource type="PackedScene" uid="uid://bvabhb1y7mfww" path="res://scenes/pointer.tscn" id="2_1j12j"]
+[ext_resource type="PackedScene" uid="uid://bvabhb1y7mfww" path="res://scenes/HUD.tscn" id="2_1j12j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_87tt2"]
 height = 1.8

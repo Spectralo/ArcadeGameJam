@@ -13,6 +13,7 @@ script = ExtResource("1_lbnmb")
 [node name="lamp" parent="." instance=ExtResource("1_ubdl8")]
 
 [node name="BézierCurve_001" parent="lamp" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00036335, 0.0020026, 0.00148129)
 surface_material_override/1 = ExtResource("3_2mawp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

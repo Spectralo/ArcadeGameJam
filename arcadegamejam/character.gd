@@ -18,6 +18,8 @@ var t_bob = 0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	$Head/Camera3D/CanvasLayer/Panel/Label2.text = get_tree().root.get_child(0).GOAL
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("pause"):
@@ -84,6 +86,7 @@ func highlightTargetableObject():
 			$Head/Camera3D/CanvasLayer.showE()
 			if Input.is_action_just_pressed('use'):
 				print("Used")
+				element.activate()
 		else:
 			$Head/Camera3D/CanvasLayer.hideE()
 	else:

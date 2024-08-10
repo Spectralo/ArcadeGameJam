@@ -19,13 +19,13 @@ func activate():
 	if isOn:
 		isOn = false
 		$"lamp/BézierCurve_001".set_surface_override_material(1,shaderOff)
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(randf_range(0.01,0.1)).timeout
 		$"lamp/BézierCurve_001".set_surface_override_material(1,shaderOn)
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(randf_range(0.01,0.1)).timeout
 		$"lamp/BézierCurve_001".set_surface_override_material(1,shaderOff)
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(randf_range(0.01,0.1)).timeout
 		$"lamp/BézierCurve_001".set_surface_override_material(1,shaderOn)
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(randf_range(0.01,0.1)).timeout
 		$"lamp/BézierCurve_001".set_surface_override_material(1,shaderOff)
 	else:
 		$"lamp/BézierCurve_001".set_surface_override_material(1,shaderOn)
