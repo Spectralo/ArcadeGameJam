@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvabhb1y7mfww"]
+
+[ext_resource type="Script" path="res://scenes/mesh_instance_2d.gd" id="1_gbf42"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ceioc"]
+radius = 10.0
+height = 20.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(960, 540)
+mesh = SubResource("SphereMesh_ceioc")
+script = ExtResource("1_gbf42")

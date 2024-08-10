@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1kbmyef6ntnf"]
+[gd_scene load_steps=5 format=3 uid="uid://d1kbmyef6ntnf"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_c4sl7"]
+[ext_resource type="PackedScene" uid="uid://bvabhb1y7mfww" path="res://scenes/pointer.tscn" id="2_1j12j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_87tt2"]
 height = 1.8
@@ -18,7 +19,13 @@ mesh = SubResource("CapsuleMesh_87tt2")
 shape = SubResource("ConvexPolygonShape3D_eycob")
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.775248, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.564799, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0919566, 0)
+
+[node name="CanvasLayer" parent="Head/Camera3D" instance=ExtResource("2_1j12j")]
+
+[node name="RayCast3D" type="RayCast3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0.8, 0, 0, 1)

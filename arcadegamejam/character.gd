@@ -14,6 +14,7 @@ var t_bob = 0
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var raycast = $Head/RayCast3D
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -63,7 +64,10 @@ func _physics_process(delta):
 	# Bob !
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
-
+	
+	# Handle object highlighting
+	highlightTargetableObject()
+	
 	move_and_slide()
 
 
@@ -72,6 +76,15 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ/2 ) * BOB_AMP
 	return pos
+	
+func highlightTargetableObject():
+	if raycast.get_collider():
+		var element = raycast.get_collider()
+		if "TARGETABLE" in element:
+			if Input.is_action_just_pressed('use'):
+				print("Used")
+				element.activate()
+	
 	
 	
 	
