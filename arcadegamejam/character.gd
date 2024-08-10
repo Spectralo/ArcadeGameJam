@@ -33,7 +33,7 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 	
 
-
+	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -57,7 +57,7 @@ func _physics_process(delta):
 		else:
 			velocity.x = 0.0
 			velocity.z = 0.0
-	else:
+	elif not paused:
 		velocity.x = lerp(velocity.x , direction.x*SPEED, delta * 3.0)
 		velocity.y = lerp(velocity.y , direction.y*SPEED, delta * 3.0)
 		
@@ -81,9 +81,13 @@ func highlightTargetableObject():
 	if raycast.get_collider():
 		var element = raycast.get_collider()
 		if "TARGETABLE" in element:
+			$Head/Camera3D/CanvasLayer.showE()
 			if Input.is_action_just_pressed('use'):
 				print("Used")
-				element.activate()
+		else:
+			$Head/Camera3D/CanvasLayer.hideE()
+	else:
+		$Head/Camera3D/CanvasLayer.hideE()
 	
 	
 	

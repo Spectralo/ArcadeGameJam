@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://jv255sgg36dl"]
+
+[ext_resource type="Script" path="res://scenes/lamp.gd" id="1_lbnmb"]
+[ext_resource type="PackedScene" uid="uid://dxgxyv1a6v4o5" path="res://assets/models/furnitures/lamp.glb" id="1_ubdl8"]
+[ext_resource type="Material" uid="uid://350isnguso7p" path="res://shaders/lampon.tres" id="3_2mawp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ww8e4"]
+size = Vector3(0.230804, 1.72925, 0.268311)
+
+[node name="lamp" type="StaticBody3D"]
+script = ExtResource("1_lbnmb")
+
+[node name="lamp" parent="." instance=ExtResource("1_ubdl8")]
+
+[node name="BézierCurve_001" parent="lamp" index="0"]
+surface_material_override/1 = ExtResource("3_2mawp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.311004, 0.832886, -0.205693)
+shape = SubResource("BoxShape3D_ww8e4")
+
+[editable path="lamp"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmisxlt44w7dq"]
+[gd_scene load_steps=5 format=3 uid="uid://bmisxlt44w7dq"]
 
 [ext_resource type="Script" path="res://scenes/door.gd" id="1_i1tgq"]
 [ext_resource type="PackedScene" uid="uid://b78ar8x10bci" path="res://assets/models/furnitures/door.glb" id="1_ii0dm"]
+[ext_resource type="Material" uid="uid://d3nwewwlpp607" path="res://assets/outline.tres" id="3_06ekr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7g3a3"]
 size = Vector3(1.00105, 2.00732, 0.0749512)
@@ -11,6 +12,11 @@ script = ExtResource("1_i1tgq")
 
 [node name="door" parent="." instance=ExtResource("1_ii0dm")]
 
+[node name="Cube_035" parent="door" index="0"]
+material_overlay = ExtResource("3_06ekr")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333961, 0.156494, -0.0806885)
 shape = SubResource("BoxShape3D_7g3a3")
+
+[editable path="door"]

@@ -3,6 +3,7 @@ extends StaticBody3D
 const TARGETABLE = true
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -12,5 +13,3 @@ func _ready():
 func _process(delta):
 	pass
 	
-func activate():
-	print("door opened")
