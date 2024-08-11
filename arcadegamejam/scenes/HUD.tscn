@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvabhb1y7mfww"]
+[gd_scene load_steps=13 format=3 uid="uid://bvabhb1y7mfww"]
 
 [ext_resource type="Script" path="res://scripts/pointer.gd" id="1_q05fw"]
 [ext_resource type="FontFile" uid="uid://hbkjq4ihhqie" path="res://assets/fonts/Nexa-Heavy.ttf" id="2_tdp1b"]
@@ -42,6 +42,42 @@ corner_radius_bottom_left = 100
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atfd4"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 100
+
+[sub_resource type="Animation" id="Animation_mxu1k"]
+resource_name = "goal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-663, 72), Vector2(-663, 72), Vector2(89, 72)]
+}
+
+[sub_resource type="Animation" id="Animation_gxu06"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-663, 72)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uuoci"]
+_data = {
+"RESET": SubResource("Animation_gxu06"),
+"goal": SubResource("Animation_mxu1k")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajt2t"]
 bg_color = Color(1, 1, 1, 1)
@@ -125,6 +161,9 @@ text = "Current Goal
 "
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uuoci")
+}
 
 [node name="Panel3" type="Panel" parent="."]
 anchors_preset = 8

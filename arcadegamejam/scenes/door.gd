@@ -21,4 +21,4 @@ func activate():
 
 func _on_animation_player_animation_finished(_anim_name):
 	isOpen = true
-	get_tree().root.get_child(0).nextLevel()
+	get_tree().root.get_child(0).nextLevel(	)

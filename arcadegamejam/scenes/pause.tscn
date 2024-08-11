@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://brj1a5codaqao"]
+
+[ext_resource type="FontFile" uid="uid://hbkjq4ihhqie" path="res://assets/fonts/Nexa-Heavy.ttf" id="1_5rf8w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxcb8"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_abh42"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp8lu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8kru"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndgcy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8d2x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xgbr"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.494118)
+
+[node name="Button2" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -1.0
+offset_top = 2055.0
+offset_right = 279.0
+offset_bottom = 2159.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fxcb8")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -96.0
+offset_right = 237.0
+offset_bottom = -23.0
+grow_vertical = 0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_5rf8w")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_abh42")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hp8lu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_v8kru")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ndgcy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k8d2x")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8xgbr")
+text = "Settings"

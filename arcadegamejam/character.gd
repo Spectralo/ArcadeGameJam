@@ -18,15 +18,16 @@ var t_bob = 0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	# $Head/Camera3D/CanvasLayer/Panel/Label2.text = get_tree().root.get_child(1).GOAL
+	$Head/Camera3D/CanvasLayer/Panel2/Label2.text = get_parent_node_3d().GOAL
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("pause"):
 		if paused == false:
 			paused = true
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			$Head/Camera3D/CanvasLayer2.show()
 		else:
+			$Head/Camera3D/CanvasLayer2.hide()
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			paused = false
 		
