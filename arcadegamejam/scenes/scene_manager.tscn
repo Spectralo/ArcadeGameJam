@@ -1,11 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbragnkk3mmyl"]
+[gd_scene load_steps=9 format=3 uid="uid://cbragnkk3mmyl"]
 
 [ext_resource type="Script" path="res://scenes/scene_manager.gd" id="1_so16w"]
 [ext_resource type="PackedScene" uid="uid://s4gwp25m63wu" path="res://scenes/levels/level1.tscn" id="2_yctrm"]
 
 [sub_resource type="Environment" id="Environment_rqiyr"]
+ssil_enabled = true
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 8.12441
+glow_enabled = true
 adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_6lknq"]
+dof_blur_far_enabled = true
 
 [sub_resource type="Animation" id="Animation_6o2qe"]
 resource_name = "fadeout"
@@ -66,6 +73,7 @@ script = ExtResource("1_so16w")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rqiyr")
+camera_attributes = SubResource("CameraAttributesPractical_6lknq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

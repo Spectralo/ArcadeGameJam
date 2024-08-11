@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://04xdkh8kxw3u"]
+[gd_scene load_steps=11 format=3 uid="uid://04xdkh8kxw3u"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_2.gd" id="1_x0ck4"]
 [ext_resource type="Material" uid="uid://dfstdx2sogm1q" path="res://assets/protod.tres" id="2_b11j6"]
 [ext_resource type="PackedScene" uid="uid://jv255sgg36dl" path="res://scenes/lamp.tscn" id="3_j10do"]
 [ext_resource type="PackedScene" uid="uid://d1kbmyef6ntnf" path="res://scenes/character.tscn" id="4_vwjpg"]
 [ext_resource type="PackedScene" uid="uid://bmisxlt44w7dq" path="res://scenes/door.tscn" id="5_2sgi7"]
+[ext_resource type="PackedScene" uid="uid://b83pl7pkk8sj1" path="res://scenes/table.tscn" id="6_i0rdj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j6578"]
 size = Vector3(6, 0.1, 8)
@@ -92,13 +93,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94142, 1.96002, 0)
 shape = SubResource("BoxShape3D_qvxv4")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05652, 0)
-
-[node name="lamp" parent="OmniLight3D" instance=ExtResource("3_j10do")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47862, -2.01855, -1.15886)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05376, 0)
+omni_range = 9.711
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_vwjpg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83577, 1.14709, 0)
 
 [node name="door" parent="." instance=ExtResource("5_2sgi7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.60853, 5.17684, 1.36601)
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("6_i0rdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97691, 0.513232, 1.6811)
+
+[node name="lamp" parent="." instance=ExtResource("3_j10do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47862, 0.0352108, -1.15886)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84462, 1.78504)
+omni_range = 2.574
+omni_attenuation = 0.01

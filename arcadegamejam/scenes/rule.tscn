@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca8woilspp66w"]
+
+[sub_resource type="GDScript" id="GDScript_ck34a"]
+script/source = "extends StaticBody3D
+
+@onready var ROOT = get_tree().root.get_child(1)
+
+const TARGETABLE = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func activate():
+	ROOT.unlockRule
+	self.hide()
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnomh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4c6yh"]
+material = SubResource("StandardMaterial3D_xnomh")
+size = Vector3(0.3, 0.01, 0.2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n8hy3"]
+data = PackedVector3Array(-0.15, 0.015, 0.1, 0.15, 0.015, 0.1, -0.15, -0.015, 0.1, 0.15, 0.015, 0.1, 0.15, -0.015, 0.1, -0.15, -0.015, 0.1, 0.15, 0.015, -0.1, -0.15, 0.015, -0.1, 0.15, -0.015, -0.1, -0.15, 0.015, -0.1, -0.15, -0.015, -0.1, 0.15, -0.015, -0.1, 0.15, 0.015, 0.1, 0.15, 0.015, -0.1, 0.15, -0.015, 0.1, 0.15, 0.015, -0.1, 0.15, -0.015, -0.1, 0.15, -0.015, 0.1, -0.15, 0.015, -0.1, -0.15, 0.015, 0.1, -0.15, -0.015, -0.1, -0.15, 0.015, 0.1, -0.15, -0.015, 0.1, -0.15, -0.015, -0.1, 0.15, 0.015, 0.1, -0.15, 0.015, 0.1, 0.15, 0.015, -0.1, -0.15, 0.015, 0.1, -0.15, 0.015, -0.1, 0.15, 0.015, -0.1, -0.15, -0.015, 0.1, 0.15, -0.015, 0.1, -0.15, -0.015, -0.1, 0.15, -0.015, 0.1, 0.15, -0.015, -0.1, -0.15, -0.015, -0.1)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+script = SubResource("GDScript_ck34a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4c6yh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_n8hy3")

@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 6
+const SPEED = 4
+const JUMP_VELOCITY = 4
 const SENSITIVITY = 0.003 
 var gravity = 9.8
 var paused = false
@@ -14,7 +14,7 @@ var t_bob = 0
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-@onready var raycast = $Head/RayCast3D
+@onready var raycast = $Head/Camera3D/RayCast3D
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -34,15 +34,14 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion and not paused:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(60))
 	
 
 	
 func _physics_process(delta):
-	print(get_tree().root.get_child(0))
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity = velocity / 1.01 + get_gravity() * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -63,8 +62,8 @@ func _physics_process(delta):
 			velocity.x = 0.0
 			velocity.z = 0.0
 	elif not paused:
-		velocity.x = lerp(velocity.x , direction.x*SPEED, delta * 3.0)
-		velocity.y = lerp(velocity.y , direction.y*SPEED, delta * 3.0)
+		velocity.x = lerp(velocity.x , direction.x*SPEED, delta * 1.0)
+		velocity.y = lerp(velocity.y , direction.y*SPEED, delta * 1.0)
 		
 	# Bob !
 	t_bob += delta * velocity.length() * float(is_on_floor())
@@ -86,6 +85,7 @@ func highlightTargetableObject():
 	if raycast.get_collider():
 		print("collider")
 		var element = raycast.get_collider()
+		print(element)
 		if "TARGETABLE" in element:
 			print("target")
 			$Head/Camera3D/CanvasLayer.showE()
