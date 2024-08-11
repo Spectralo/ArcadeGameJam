@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://s4gwp25m63wu"]
+[gd_scene load_steps=9 format=3 uid="uid://04xdkh8kxw3u"]
 
-[ext_resource type="Material" uid="uid://dfstdx2sogm1q" path="res://assets/protod.tres" id="1_gm5by"]
-[ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_h4vua"]
-[ext_resource type="PackedScene" uid="uid://jv255sgg36dl" path="res://scenes/lamp.tscn" id="2_jb8bf"]
-[ext_resource type="PackedScene" uid="uid://d1kbmyef6ntnf" path="res://scenes/character.tscn" id="3_xo6va"]
-[ext_resource type="PackedScene" uid="uid://bmisxlt44w7dq" path="res://scenes/door.tscn" id="4_w1dy6"]
+[ext_resource type="Script" path="res://scenes/levels/level_2.gd" id="1_x0ck4"]
+[ext_resource type="Material" uid="uid://dfstdx2sogm1q" path="res://assets/protod.tres" id="2_b11j6"]
+[ext_resource type="PackedScene" uid="uid://jv255sgg36dl" path="res://scenes/lamp.tscn" id="3_j10do"]
+[ext_resource type="PackedScene" uid="uid://d1kbmyef6ntnf" path="res://scenes/character.tscn" id="4_vwjpg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j6578"]
 size = Vector3(6, 0.1, 4)
@@ -13,15 +12,14 @@ size = Vector3(6, 0.1, 4)
 size = Vector3(6, 0.1, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xtqyx"]
-material = ExtResource("1_gm5by")
+material = ExtResource("2_b11j6")
 size = Vector3(0.1, 4, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qvxv4"]
 size = Vector3(0.1, 4, 4)
 
 [node name="Firstlevel" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000468731, 0.000647426, -0.00013119)
-script = ExtResource("1_h4vua")
+script = ExtResource("1_x0ck4")
 
 [node name="WallsFloor" type="Node" parent="."]
 
@@ -29,7 +27,7 @@ script = ExtResource("1_h4vua")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallsFloor/StaticBody3D"]
 mesh = SubResource("BoxMesh_j6578")
-surface_material_override/0 = ExtResource("1_gm5by")
+surface_material_override/0 = ExtResource("2_b11j6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallsFloor/StaticBody3D"]
 shape = SubResource("BoxShape3D_qbds0")
@@ -39,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.9
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallsFloor/StaticBody3D2"]
 mesh = SubResource("BoxMesh_j6578")
-surface_material_override/0 = ExtResource("1_gm5by")
+surface_material_override/0 = ExtResource("2_b11j6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallsFloor/StaticBody3D2"]
 shape = SubResource("BoxShape3D_qbds0")
@@ -49,7 +47,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.9
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallsFloor/StaticBody3D3"]
 mesh = SubResource("BoxMesh_j6578")
-surface_material_override/0 = ExtResource("1_gm5by")
+surface_material_override/0 = ExtResource("2_b11j6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallsFloor/StaticBody3D3"]
 shape = SubResource("BoxShape3D_qbds0")
@@ -60,7 +58,7 @@ metadata/targetable = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallsFloor/StaticBody3D4"]
 mesh = SubResource("BoxMesh_j6578")
-surface_material_override/0 = ExtResource("1_gm5by")
+surface_material_override/0 = ExtResource("2_b11j6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallsFloor/StaticBody3D4"]
 shape = SubResource("BoxShape3D_qbds0")
@@ -89,11 +87,8 @@ shape = SubResource("BoxShape3D_qvxv4")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05652, 0)
 
-[node name="lamp" parent="OmniLight3D" instance=ExtResource("2_jb8bf")]
+[node name="lamp" parent="OmniLight3D" instance=ExtResource("3_j10do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47862, -2.01855, -1.15886)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("3_xo6va")]
+[node name="CharacterBody3D" parent="." instance=ExtResource("4_vwjpg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83577, 1.14709, 0)
-
-[node name="door" parent="." instance=ExtResource("4_w1dy6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.592, 0.0328551, 1.51729)

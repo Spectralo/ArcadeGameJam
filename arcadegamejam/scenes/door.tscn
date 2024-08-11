@@ -6,21 +6,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_7g3a3"]
 size = Vector3(1.00105, 2.00732, 0.0749512)
 
-[sub_resource type="Animation" id="Animation_uwnsu"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("pivot:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667, 0.966667),
-"transitions": PackedFloat32Array(1, 12.1257),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.0472, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_25g30"]
 length = 0.001
 tracks/0/type = "value"
@@ -34,6 +19,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uwnsu"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.966667),
+"transitions": PackedFloat32Array(1, 12.1257),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.0472, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3rw87"]
@@ -60,5 +60,7 @@ libraries = {
 
 [node name="Cube_035" parent="pivot/door" index="0"]
 transform = Transform3D(0.0234123, 0, 0, 0, 0.0234123, 0, 0, 0, 0.0234123, 0.852605, 0.851349, 0)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="pivot/door"]

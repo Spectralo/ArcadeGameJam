@@ -19,7 +19,7 @@ var t_bob = 0
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	$Head/Camera3D/CanvasLayer/Panel/Label2.text = get_tree().root.get_child(0).GOAL
+	# $Head/Camera3D/CanvasLayer/Panel/Label2.text = get_tree().root.get_child(1).GOAL
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("pause"):
@@ -29,6 +29,7 @@ func _unhandled_input(event):
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			paused = false
+		
 	if event is InputEventMouseMotion and not paused:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
@@ -37,6 +38,7 @@ func _unhandled_input(event):
 
 	
 func _physics_process(delta):
+	print(get_tree().root.get_child(0))
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -50,7 +52,7 @@ func _physics_process(delta):
 	var input_dir
 	var direction
 	if not paused:
-		input_dir = Input.get_vector("left", "right", "up", "down")
+		input_dir = Input.get_vector("left"	, "right", "up", "down")
 		direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():
 		if direction:
@@ -81,8 +83,10 @@ func _headbob(time) -> Vector3:
 	
 func highlightTargetableObject():
 	if raycast.get_collider():
+		print("collider")
 		var element = raycast.get_collider()
 		if "TARGETABLE" in element:
+			print("target")
 			$Head/Camera3D/CanvasLayer.showE()
 			if Input.is_action_just_pressed('use'):
 				print("Used")

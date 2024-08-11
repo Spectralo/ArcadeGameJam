@@ -1,25 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvabhb1y7mfww"]
+[gd_scene load_steps=10 format=3 uid="uid://bvabhb1y7mfww"]
 
 [ext_resource type="Script" path="res://scripts/pointer.gd" id="1_q05fw"]
 [ext_resource type="FontFile" uid="uid://hbkjq4ihhqie" path="res://assets/fonts/Nexa-Heavy.ttf" id="2_tdp1b"]
 [ext_resource type="FontFile" uid="uid://60nu5csc26c3" path="res://assets/fonts/Nexa-ExtraLight.ttf" id="3_lmsip"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_ceioc"]
-radius = 10.0
-height = 20.0
-
-[sub_resource type="GDScript" id="GDScript_hpgk1"]
-script/source = "extends MeshInstance2D
-
-
-# Called when the node enters the scene tree for the first time.
-
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [sub_resource type="GDScript" id="GDScript_dntgl"]
 script/source = "extends Label
@@ -60,23 +43,30 @@ corner_radius_bottom_left = 100
 bg_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 100
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7lsf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajt2t"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_q05fw")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(960, 540)
-mesh = SubResource("SphereMesh_ceioc")
-script = SubResource("GDScript_hpgk1")
-
 [node name="Label" type="Label" parent="."]
-offset_left = 1072.0
-offset_top = 488.0
-offset_right = 1577.0
-offset_bottom = 696.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.5
+offset_top = -12.0
+offset_right = 252.5
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("2_tdp1b")
 theme_override_font_sizes/font_size = 80
 text = "E  to interact"
@@ -84,22 +74,40 @@ script = SubResource("GDScript_dntgl")
 
 [node name="Panel" type="Panel" parent="Label"]
 layout_mode = 0
-offset_left = -13.0
-offset_right = 67.0
-offset_bottom = 104.0
+offset_left = -8.0
+offset_top = 3.99994
+offset_right = 93.0
+offset_bottom = 135.0
+scale = Vector2(0.7, 0.7)
+mouse_filter = 1
 theme = SubResource("Theme_qf28u")
 theme_override_styles/panel = SubResource("StyleBoxFlat_q7pxk")
 
 [node name="Panel2" type="Panel" parent="."]
-offset_left = 296.0
-offset_top = 167.0
-offset_right = 1160.0
-offset_bottom = 343.0
+offset_left = 89.0
+offset_top = 72.0
+offset_right = 441.0
+offset_bottom = 176.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_c27ju")
 
+[node name="Label2" type="Label" parent="Panel2"]
+layout_mode = 1
+offset_left = 68.0
+offset_top = 22.0
+offset_right = 171.0
+offset_bottom = 113.0
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_lmsip")
+theme_override_font_sizes/font_size = 49
+text = "Open the fucking door.  "
+
 [node name="Panel" type="Panel" parent="."]
-offset_right = 744.0
-offset_bottom = 176.0
+offset_right = 571.0
+offset_bottom = 126.0
+scale = Vector2(0.7, 0.7)
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_atfd4")
 
 [node name="Label" type="Label" parent="Panel"]
@@ -108,39 +116,38 @@ offset_left = 24.0
 offset_top = 16.0
 offset_right = 659.0
 offset_bottom = 146.0
+scale = Vector2(0.7, 0.7)
+mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_tdp1b")
 theme_override_font_sizes/font_size = 100
 text = "Current Goal
 "
 
-[node name="Label2" type="Label" parent="Panel"]
-offset_left = 381.0
-offset_top = 184.0
-offset_right = 1087.0
-offset_bottom = 314.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_lmsip")
-theme_override_font_sizes/font_size = 100
-text = "Open the door"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Panel3" type="Panel" parent="."]
-offset_left = 1174.78
-offset_top = 904.0
-offset_right = 1918.78
-offset_bottom = 1080.0
-pivot_offset = Vector2(744, 176)
-theme_override_styles/panel = SubResource("StyleBoxFlat_m7lsf")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ajt2t")
 
-[node name="Label" type="Label" parent="Panel3"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 24.0
-offset_right = 708.0
-offset_bottom = 154.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_tdp1b")
-theme_override_font_sizes/font_size = 100
-text = "Custom Rules"
+theme_override_font_sizes/font_size = 50
+text = "FPS : --"
