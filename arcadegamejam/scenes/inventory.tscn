@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cugmwi8onw0bw"]
+
+[ext_resource type="Script" path="res://scenes/inventory.gd" id="1_bp23j"]
+[ext_resource type="Theme" uid="uid://bmmmvt80j468p" path="res://scenes/theme.tres" id="1_sarsg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afcyf"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnlv7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_bp23j")
+
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -407.0
+offset_top = 180.0
+offset_bottom = 1151.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_afcyf")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -298.0
+offset_top = 80.0
+offset_right = 1.99976
+offset_bottom = 180.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qnlv7")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -36.0
+offset_right = 262.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sarsg")
+text = "Inventory"

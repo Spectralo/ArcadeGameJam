@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1kbmyef6ntnf"]
+[gd_scene load_steps=8 format=3 uid="uid://d1kbmyef6ntnf"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_c4sl7"]
 [ext_resource type="PackedScene" uid="uid://bvabhb1y7mfww" path="res://scenes/HUD.tscn" id="2_1j12j"]
+[ext_resource type="Resource" uid="uid://b4vms0vago117" path="res://scripts/inventory/playerinv.tres" id="2_2g5ql"]
 [ext_resource type="PackedScene" uid="uid://brj1a5codaqao" path="res://scenes/pause.tscn" id="3_y3c46"]
+[ext_resource type="PackedScene" uid="uid://cugmwi8onw0bw" path="res://scenes/inventory.tscn" id="4_6fsao"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_87tt2"]
 height = 1.8
@@ -12,6 +14,7 @@ points = PackedVector3Array(0.1072, -0.455979, -0.482912, 0.080844, 0.485261, 0.
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_c4sl7")
+inv = ExtResource("2_2g5ql")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_87tt2")
@@ -33,3 +36,8 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, -2, 0)
 debug_shape_custom_color = Color(0.8, 0, 0, 1)
+
+[node name="Inventory" parent="Head/Camera3D" instance=ExtResource("4_6fsao")]
+visible = false
+
+[editable path="Head/Camera3D/Inventory"]

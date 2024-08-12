@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 4
 const SENSITIVITY = 0.003 
 var gravity = 9.8
 var paused = false
+@export var inv: Inv 
 
 #bob
 const BOB_FREQ = 2.8

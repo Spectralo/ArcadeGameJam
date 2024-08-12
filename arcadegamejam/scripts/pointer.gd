@@ -12,7 +12,6 @@ func _ready():
 func _process(delta):
 	$Panel2.size.x = $Panel2/Label2.size.x + 110
 	$Panel2.size.y = $Panel2/Label2.size.y + 20
-	$Label2.text = "FPS : "+str(Engine.get_frames_per_second())
 
 	
 func hideE():

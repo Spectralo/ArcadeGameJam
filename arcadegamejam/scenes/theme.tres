@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bmmmvt80j468p"]
+
+[ext_resource type="FontFile" uid="uid://hbkjq4ihhqie" path="res://assets/fonts/Nexa-Heavy.ttf" id="1_iw4lk"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 50
+Label/fonts/font = ExtResource("1_iw4lk")
