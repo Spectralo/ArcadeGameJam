@@ -7,17 +7,20 @@ func _ready():
 	
 	
 func close():
+	get_parent().get_parent().get_parent().invopen = false
 	self.visible = false
 	is_open = false
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	get_parent().get_parent().get_parent().paused = false
+	if get_parent().get_parent().get_parent().paused == false:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func open():
+	get_parent().get_parent().get_parent().invopen = true
 	self.visible = true
 	is_open = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_parent().get_parent().get_parent().paused = true
 
 	
 

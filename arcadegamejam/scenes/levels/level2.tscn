@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://04xdkh8kxw3u"]
+[gd_scene load_steps=13 format=3 uid="uid://04xdkh8kxw3u"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_2.gd" id="1_x0ck4"]
 [ext_resource type="Material" uid="uid://dfstdx2sogm1q" path="res://assets/protod.tres" id="2_b11j6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1kbmyef6ntnf" path="res://scenes/character.tscn" id="4_vwjpg"]
 [ext_resource type="PackedScene" uid="uid://bmisxlt44w7dq" path="res://scenes/door.tscn" id="5_2sgi7"]
 [ext_resource type="PackedScene" uid="uid://b83pl7pkk8sj1" path="res://scenes/table.tscn" id="6_i0rdj"]
+[ext_resource type="PackedScene" uid="uid://clbffs03wc71q" path="res://scenes/gravityorb.tscn" id="7_7jkg8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j6578"]
 size = Vector3(6, 0.1, 8)
@@ -19,6 +20,9 @@ size = Vector3(0.1, 8, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qvxv4"]
 size = Vector3(0.1, 11.5142, 4)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qv3hk"]
+bounce = 0.3
 
 [node name="Firstlevel" type="Node3D"]
 script = ExtResource("1_x0ck4")
@@ -112,3 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47862, 0.0352108, -1.15886
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84462, 1.78504)
 omni_range = 2.574
 omni_attenuation = 0.01
+
+[node name="RigidBody3D" parent="." instance=ExtResource("7_7jkg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175052, 1.28653, 1.35821)
+physics_material_override = SubResource("PhysicsMaterial_qv3hk")

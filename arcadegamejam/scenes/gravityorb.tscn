@@ -1,0 +1,55 @@
+[gd_scene load_steps=12 format=3 uid="uid://clbffs03wc71q"]
+
+[ext_resource type="Shader" path="res://assets/rainbow.gdshader" id="1_tmloh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qoakq"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5apjk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tx7ma"]
+seamless = true
+noise = SubResource("FastNoiseLite_5apjk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxis0"]
+render_priority = 0
+shader = ExtResource("1_tmloh")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_tx7ma")
+
+[sub_resource type="TorusMesh" id="TorusMesh_d6cp4"]
+inner_radius = 0.166
+outer_radius = 0.232
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_humcy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tneni"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qbk68"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rse76"]
+albedo_color = Color(0, 0, 0, 1)
+rim_enabled = true
+rim_tint = 1.0
+refraction_enabled = true
+detail_mask = SubResource("NoiseTexture2D_tneni")
+detail_blend_mode = 2
+detail_albedo = SubResource("NoiseTexture2D_humcy")
+detail_normal = SubResource("NoiseTexture2D_qbk68")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hctlx"]
+radius = 0.246678
+
+[node name="RigidBody3D" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_qoakq")
+surface_material_override/0 = SubResource("ShaderMaterial_lxis0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.963654, -0.267154, 0, 0.267154, 0.963654, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("TorusMesh_d6cp4")
+surface_material_override/0 = SubResource("StandardMaterial3D_rse76")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_hctlx")

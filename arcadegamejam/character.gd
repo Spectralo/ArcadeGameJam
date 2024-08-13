@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 4
 const SENSITIVITY = 0.003 
 var gravity = 9.8
 var paused = false
+var invopen = false
 @export var inv: Inv 
 
 #bob
@@ -19,12 +20,13 @@ var t_bob = 0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$Head/Camera3D/CanvasLayer/Panel2/Label2.text = get_parent_node_3d().GOAL
+	$Head/Camera3D/CanvasLayer/Panel2/Label2.text = get_parent().GOAL
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("pause"):
 		if paused == false:
 			paused = true
+			$Head/Camera3D/Inventory.close()
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			$Head/Camera3D/CanvasLayer2.show()
 		else:
@@ -32,7 +34,7 @@ func _unhandled_input(event):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			paused = false
 		
-	if event is InputEventMouseMotion and not paused:
+	if event is InputEventMouseMotion and not paused and not invopen:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(60))
